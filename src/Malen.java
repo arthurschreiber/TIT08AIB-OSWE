@@ -23,6 +23,8 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
    private static final String gelb = "Gelb";
    private static final String gruen = "Grün";
    private static final String blau = "Blau";
+   private static final String cyan = "Cyan";
+   private static final String magenta = "Magenta";
 
    public void init()
    {
@@ -79,7 +81,12 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
          aktuelleFarbe = Color.yellow;
       else if (e.getItem() == gruen)
          aktuelleFarbe = Color.green;
-      else if (e.getItem() == blau) aktuelleFarbe = Color.blue;
+      else if (e.getItem() == blau)
+         aktuelleFarbe = Color.blue;
+      else if (e.getItem() == cyan)
+         aktuelleFarbe = Color.cyan;
+      else if (e.getItem() == magenta)
+         aktuelleFarbe = Color.magenta;
    }
 
    public void mouseDragged(MouseEvent e)
