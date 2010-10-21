@@ -19,6 +19,8 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
    private JButton endeKnopf;
    private JPanel menue = new JPanel();
    private Zeichnung zeichnung = new Zeichnung();
+   private JComboBox strichWahl;
+   private String aktuellerStrich = strich;
 
    private static final String schwarz = "Schwarz";
    private static final String rot = "Rot";
@@ -27,6 +29,9 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
    private static final String blau = "Blau";
    private static final String cyan = "Cyan";
    private static final String magenta = "Magenta";
+   
+   private static final String strich = "Strich";
+   private static final String doppelStrich = "DoppelStrich";
 
    public void init()
    {
@@ -56,6 +61,15 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
       menue.add(new JLabel("Farbe: "));
       menue.add(farbWahl);
 
+      strichWahl = new JComboBox();
+      strichWahl.addItemListener(this);
+      strichWahl.addItem(strich);
+      strichWahl.addItem(doppelStrich);
+      strichWahl.setForeground(Color.black);
+      strichWahl.setBackground(Color.lightGray);
+      menue.add(new JLabel("Strichart: "));
+      menue.add(strichWahl);
+      
       endeKnopf = new JButton("Ende");
       endeKnopf.addActionListener(this);
       endeKnopf.setForeground(Color.black);
@@ -80,6 +94,14 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
 
    public void itemStateChanged(ItemEvent e)
    {
+      if (e.getItem() == strich) {
+         aktuellerStrich  = strich;
+         return;
+      } else if (e.getItem() == doppelStrich) {
+         aktuellerStrich = doppelStrich;
+         return;
+      }
+      
       if (e.getItem() == schwarz)
          aktuelleFarbe = Color.black;
       else if (e.getItem() == rot)
@@ -107,7 +129,14 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
 
    public void mouseDragged(MouseEvent e)
    {
-      Strich s = new Strich(aktuelleFarbe, altesX, altesY, e.getX(), e.getY());
+      Strich s = null;
+      
+      if (aktuellerStrich == strich) {
+         s = new Strich(aktuelleFarbe, altesX, altesY, e.getX(), e.getY());
+      } else if (aktuellerStrich == doppelStrich) {
+         s = new DoppelStrich(aktuelleFarbe, altesX, altesY, e.getX(), e.getY());
+      }
+      
       s.zeichne(zeichnung.getGraphics());
 
       zeichnung.addiere(s);
