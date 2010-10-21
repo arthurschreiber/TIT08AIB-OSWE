@@ -17,8 +17,7 @@ public class Zeichnung extends JPanel
       super.paintComponent(g);
       for (Strich s : striche)
       {
-         g.setColor(s.getFarbe());
-         g.drawLine(s.getStartX(), s.getStartY(), s.getEndX(), s.getEndY());
+         s.zeichne(g);
       }
    }
    

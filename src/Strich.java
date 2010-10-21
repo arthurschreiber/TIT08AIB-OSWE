@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Graphics;
 
 public class Strich
 {
@@ -17,28 +18,9 @@ public class Strich
       this.endY = endY;
    }
 
-   public Color getFarbe()
+   public void zeichne(Graphics g)
    {
-      return farbe;
-   }
-
-   public int getStartX()
-   {
-      return startX;
-   }
-
-   public int getStartY()
-   {
-      return startY;
-   }
-
-   public int getEndX()
-   {
-      return endX;
-   }
-
-   public int getEndY()
-   {
-      return endY;
+      g.setColor(farbe);
+      g.drawLine(startX, startY, endX, endY);
    }
 }
