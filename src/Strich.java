@@ -23,4 +23,24 @@ public class Strich
       g.setColor(farbe);
       g.drawLine(startX, startY, endX, endY);
    }
+
+   public int getStartX()
+   {
+      return startX;
+   }
+
+   public int getStartY()
+   {
+      return startY;
+   }
+
+   public int getEndX()
+   {
+      return endX;
+   }
+
+   public int getEndY()
+   {
+      return endY;
+   }
 }
