@@ -28,7 +28,7 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
 
    public void init()
    {
-      behaelter.setLayout(new FlowLayout());
+      behaelter.setLayout(new BorderLayout());
       behaelter.setBackground(Color.gray);
 
       loeschKnopf = new JButton("Löschen");
