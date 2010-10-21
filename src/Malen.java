@@ -62,7 +62,7 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
       endeKnopf.setBackground(Color.lightGray);
       menue.add(endeKnopf);
 
-      behaelter.addMouseMotionListener(this);
+      zeichnung.addMouseMotionListener(this);
    }
 
    public void actionPerformed(ActionEvent ereignis)
