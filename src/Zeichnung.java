@@ -4,26 +4,26 @@ import javax.swing.JPanel;
 
 public class Zeichnung extends JPanel
 {
-   private ArrayList<Strich> striche = new ArrayList<Strich>();
+   private ArrayList<Verbindung> verbindungen = new ArrayList<Verbindung>();
    
-   public void addiere(Strich s)
+   public void addiere(Verbindung v)
    {
-      striche.add(s);
+      verbindungen.add(v);
    }
    
    @Override
    protected void paintComponent(Graphics g)
    {
       super.paintComponent(g);
-      for (Strich s : striche)
+      for (Verbindung v : verbindungen)
       {
-         s.zeichne(g);
+         v.zeichne(g);
       }
    }
    
    public void loesche()
    {
-      striche.clear();
+      verbindungen.clear();
       repaint();
    }
 }
