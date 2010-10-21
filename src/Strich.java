@@ -43,4 +43,9 @@ public class Strich
    {
       return endY;
    }
+
+   public Color getFarbe()
+   {
+      return farbe;
+   }
 }
