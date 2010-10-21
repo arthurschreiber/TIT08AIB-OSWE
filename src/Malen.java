@@ -32,6 +32,7 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
    
    private static final String strich = "Strich";
    private static final String doppelStrich = "DoppelStrich";
+   private static final String rechteckStrich = "RechteckStrich";
 
    public void init()
    {
@@ -65,6 +66,7 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
       strichWahl.addItemListener(this);
       strichWahl.addItem(strich);
       strichWahl.addItem(doppelStrich);
+      strichWahl.addItem(rechteckStrich);
       strichWahl.setForeground(Color.black);
       strichWahl.setBackground(Color.lightGray);
       menue.add(new JLabel("Strichart: "));
@@ -99,6 +101,9 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
          return;
       } else if (e.getItem() == doppelStrich) {
          aktuellerStrich = doppelStrich;
+         return;
+      } else if (e.getItem() == rechteckStrich) {
+         aktuellerStrich = rechteckStrich;
          return;
       }
       
@@ -135,6 +140,8 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
          s = new Strich(aktuelleFarbe, altesX, altesY, e.getX(), e.getY());
       } else if (aktuellerStrich == doppelStrich) {
          s = new DoppelStrich(aktuelleFarbe, altesX, altesY, e.getX(), e.getY());
+      } else if (aktuellerStrich == rechteckStrich) {
+         s = new RechteckStrich(aktuelleFarbe, altesX, altesY, e.getX(), e.getY());
       }
       
       s.zeichne(zeichnung.getGraphics());
