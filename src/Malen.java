@@ -107,10 +107,11 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
 
    public void mouseDragged(MouseEvent e)
    {
-      Graphics g = zeichnung.getGraphics();
-      g.setColor(aktuelleFarbe);
-      zeichnung.addiere(new Strich(aktuelleFarbe, altesX, altesY, e.getX(), e.getY()));
-      g.drawLine(altesX, altesY, e.getX(), e.getY());
+      Strich s = new Strich(aktuelleFarbe, altesX, altesY, e.getX(), e.getY());
+      s.zeichne(zeichnung.getGraphics());
+
+      zeichnung.addiere(s);
+      
       altesX = e.getX();
       altesY = e.getY();
    }
