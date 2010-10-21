@@ -10,6 +10,18 @@ public class RechteckStrich extends Strich
    }
 
    @Override
+   public Verbindung newVerbindung(Color farbe, int startX, int startY, int endX, int endY)
+   {
+      return new RechteckStrich(farbe, startX, startY, endX, endY);
+   }
+   
+   @Override
+   public String toString()
+   {
+      return "RechteckStrich";
+   }
+   
+   @Override
    public void zeichne(Graphics g)
    {
       g.setColor(getFarbe());

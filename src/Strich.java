@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Strich
+public class Strich implements Verbindung
 {
    private int startX;
    private int startY;
@@ -16,6 +16,18 @@ public class Strich
       this.startY = startY;
       this.endX = endX;
       this.endY = endY;
+   }
+
+   @Override
+   public Verbindung newVerbindung(Color farbe, int startX, int startY, int endX, int endY)
+   {
+      return new Strich(farbe, startX, startY, endX, endY);
+   }
+
+   @Override
+   public String toString()
+   {
+      return "Strich";
    }
 
    public void zeichne(Graphics g)
