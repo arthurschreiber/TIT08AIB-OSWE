@@ -17,6 +17,7 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
    private JButton loeschKnopf;
    private JComboBox farbWahl;
    private JButton endeKnopf;
+   private JPanel menue = new JPanel();;
 
    private static final String schwarz = "Schwarz";
    private static final String rot = "Rot";
@@ -30,6 +31,8 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
    {
       behaelter.setLayout(new BorderLayout());
       behaelter.setBackground(Color.gray);
+      
+      behaelter.add(menue, BorderLayout.NORTH);
 
       loeschKnopf = new JButton("Löschen");
       loeschKnopf.addActionListener(this);
