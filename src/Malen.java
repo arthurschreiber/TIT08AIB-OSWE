@@ -17,6 +17,8 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
    private JButton loeschKnopf;
    private JComboBox farbWahl;
    private JButton endeKnopf;
+   private JPanel menue = new JPanel();
+   private Zeichnung zeichnung = new Zeichnung();
 
    private static final String schwarz = "Schwarz";
    private static final String rot = "Rot";
@@ -28,14 +30,17 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
 
    public void init()
    {
-      behaelter.setLayout(new FlowLayout());
+      behaelter.setLayout(new BorderLayout());
       behaelter.setBackground(Color.gray);
-
+      
+      behaelter.add(menue, BorderLayout.NORTH);
+      behaelter.add(zeichnung, BorderLayout.CENTER);
+      
       loeschKnopf = new JButton("Löschen");
       loeschKnopf.addActionListener(this);
       loeschKnopf.setForeground(Color.black);
       loeschKnopf.setBackground(Color.lightGray);
-      behaelter.add(loeschKnopf);
+      menue.add(loeschKnopf);
 
       farbWahl = new JComboBox();
       farbWahl.addItemListener(this);
@@ -48,16 +53,16 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
       farbWahl.addItem(magenta);
       farbWahl.setForeground(Color.black);
       farbWahl.setBackground(Color.lightGray);
-      behaelter.add(new JLabel("Farbe: "));
-      behaelter.add(farbWahl);
+      menue.add(new JLabel("Farbe: "));
+      menue.add(farbWahl);
 
       endeKnopf = new JButton("Ende");
       endeKnopf.addActionListener(this);
       endeKnopf.setForeground(Color.black);
       endeKnopf.setBackground(Color.lightGray);
-      behaelter.add(endeKnopf);
+      menue.add(endeKnopf);
 
-      behaelter.addMouseMotionListener(this);
+      zeichnung.addMouseMotionListener(this);
    }
 
    public void actionPerformed(ActionEvent ereignis)
@@ -65,7 +70,7 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
       Object ereignisQuelle = ereignis.getSource();
       if (ereignisQuelle == loeschKnopf)
       {
-         behaelter.repaint();
+         zeichnung.loesche();
       }
       else if (ereignisQuelle == endeKnopf)
       {
@@ -102,8 +107,9 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
 
    public void mouseDragged(MouseEvent e)
    {
-      Graphics g = behaelter.getGraphics();
+      Graphics g = zeichnung.getGraphics();
       g.setColor(aktuelleFarbe);
+      zeichnung.addiere(new Strich(aktuelleFarbe, altesX, altesY, e.getX(), e.getY()));
       g.drawLine(altesX, altesY, e.getX(), e.getY());
       altesX = e.getX();
       altesY = e.getY();
