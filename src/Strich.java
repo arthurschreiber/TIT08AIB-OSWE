@@ -16,4 +16,29 @@ public class Strich
       this.endX = endX;
       this.endY = endY;
    }
+
+   public Color getFarbe()
+   {
+      return farbe;
+   }
+
+   public int getStartX()
+   {
+      return startX;
+   }
+
+   public int getStartY()
+   {
+      return startY;
+   }
+
+   public int getEndX()
+   {
+      return endX;
+   }
+
+   public int getEndY()
+   {
+      return endY;
+   }
 }
