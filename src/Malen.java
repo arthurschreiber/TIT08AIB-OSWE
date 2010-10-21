@@ -44,6 +44,8 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
       farbWahl.addItem(gelb);
       farbWahl.addItem(gruen);
       farbWahl.addItem(blau);
+      farbWahl.addItem(cyan);
+      farbWahl.addItem(magenta);
       farbWahl.setForeground(Color.black);
       farbWahl.setBackground(Color.lightGray);
       behaelter.add(new JLabel("Farbe: "));
