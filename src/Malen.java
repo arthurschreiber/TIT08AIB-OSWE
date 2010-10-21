@@ -70,7 +70,7 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
       Object ereignisQuelle = ereignis.getSource();
       if (ereignisQuelle == loeschKnopf)
       {
-         behaelter.repaint();
+         zeichnung.loesche();
       }
       else if (ereignisQuelle == endeKnopf)
       {
