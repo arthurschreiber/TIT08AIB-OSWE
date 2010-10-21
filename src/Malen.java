@@ -38,7 +38,7 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
       loeschKnopf.addActionListener(this);
       loeschKnopf.setForeground(Color.black);
       loeschKnopf.setBackground(Color.lightGray);
-      behaelter.add(loeschKnopf);
+      menue.add(loeschKnopf);
 
       farbWahl = new JComboBox();
       farbWahl.addItemListener(this);
@@ -51,14 +51,14 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
       farbWahl.addItem(magenta);
       farbWahl.setForeground(Color.black);
       farbWahl.setBackground(Color.lightGray);
-      behaelter.add(new JLabel("Farbe: "));
-      behaelter.add(farbWahl);
+      menue.add(new JLabel("Farbe: "));
+      menue.add(farbWahl);
 
       endeKnopf = new JButton("Ende");
       endeKnopf.addActionListener(this);
       endeKnopf.setForeground(Color.black);
       endeKnopf.setBackground(Color.lightGray);
-      behaelter.add(endeKnopf);
+      menue.add(endeKnopf);
 
       behaelter.addMouseMotionListener(this);
    }
