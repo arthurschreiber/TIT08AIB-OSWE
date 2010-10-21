@@ -87,8 +87,17 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
          aktuelleFarbe = Color.blue;
       else if (e.getItem() == cyan)
          aktuelleFarbe = Color.cyan;
-      else if (e.getItem() == magenta)
-         aktuelleFarbe = Color.magenta;
+      else if (e.getItem() == magenta) aktuelleFarbe = Color.magenta;
+
+      farbWahl.setBackground(aktuelleFarbe);
+      if (aktuelleFarbe == Color.black || aktuelleFarbe == Color.blue || aktuelleFarbe == Color.red)
+      {
+         farbWahl.setForeground(Color.white);
+      }
+      else
+      {
+         farbWahl.setForeground(Color.black);
+      }
    }
 
    public void mouseDragged(MouseEvent e)
