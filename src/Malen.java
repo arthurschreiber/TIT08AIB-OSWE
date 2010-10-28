@@ -20,8 +20,7 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
    private JPanel menue = new JPanel();
    private Zeichnung zeichnung = new Zeichnung();
    private JComboBox strichWahl;
-   private String aktuellerStrich = "Strich";
-
+   
    private static final String schwarz = "Schwarz";
    private static final String rot = "Rot";
    private static final String gelb = "Gelb";
@@ -33,6 +32,8 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
    private static final Verbindung strich = new Strich(Color.black, 0, 0, 0, 0);
    private static final Verbindung doppelStrich = new DoppelStrich(Color.black, 0, 0, 0, 0);
    private static final Verbindung rechteckStrich = new RechteckStrich(Color.black, 0, 0, 0, 0);
+   
+   private Verbindung aktuelleVerbindung = strich;
    
    public void init()
    {
@@ -96,17 +97,11 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
 
    public void itemStateChanged(ItemEvent e)
    {
-      if (e.getItem() == strich) {
-         aktuellerStrich  = strich.toString();
-         return;
-      } else if (e.getItem() == doppelStrich) {
-         aktuellerStrich = doppelStrich.toString();
-         return;
-      } else if (e.getItem() == rechteckStrich) {
-         aktuellerStrich = rechteckStrich.toString();
+      if (e.getItem() instanceof Verbindung) {
+         aktuelleVerbindung = (Verbindung) e.getItem();
          return;
       }
-      
+            
       if (e.getItem() == schwarz)
          aktuelleFarbe = Color.black;
       else if (e.getItem() == rot)
@@ -136,11 +131,11 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener
    {
       Strich s = null;
       
-      if (aktuellerStrich == strich.toString()) {
+      if (aktuelleVerbindung == strich) {
          s = new Strich(aktuelleFarbe, altesX, altesY, e.getX(), e.getY());
-      } else if (aktuellerStrich == doppelStrich.toString()) {
+      } else if (aktuelleVerbindung == doppelStrich) {
          s = new DoppelStrich(aktuelleFarbe, altesX, altesY, e.getX(), e.getY());
-      } else if (aktuellerStrich == rechteckStrich.toString()) {
+      } else if (aktuelleVerbindung == rechteckStrich) {
          s = new RechteckStrich(aktuelleFarbe, altesX, altesY, e.getX(), e.getY());
       }
       
