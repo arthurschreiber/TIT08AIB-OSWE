@@ -10,6 +10,18 @@ public class DoppelStrich extends Strich
    }
    
    @Override
+   public Verbindung newVerbindung(Color farbe, int startX, int startY, int endX, int endY)
+   {
+      return new DoppelStrich(farbe, startX, startY, endX, endY);
+   }
+   
+   @Override
+   public String toString()
+   {
+      return "DoppelStrich";
+   }
+   
+   @Override
    public void zeichne(Graphics g)
    {
       // TODO Auto-generated method stub
